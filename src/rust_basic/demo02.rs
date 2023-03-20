@@ -117,8 +117,9 @@ fn struct_traits_demo() {
 // Gneric for struct
 
 pub fn demo() {
-    // println!("{}", larger_generic(10, 4));
-    // println!("{}", larger_generic(1.2, 2.6));
-    // generic_impl_demo();
+    println!("{}", larger_generic(10, 4));
+    println!("{}", larger_generic(1.2, 2.6));
+    generic_for_struct();
+    generic_impl_demo();
     struct_traits_demo();
 }

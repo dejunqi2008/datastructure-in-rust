@@ -1,4 +1,5 @@
 mod rust_basic;
+mod leetcode;
 
 use rust_basic::demo02;
 

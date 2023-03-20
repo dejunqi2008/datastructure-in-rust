@@ -295,7 +295,7 @@ fn guess_random_number() {
 
 pub const MESSAGE: &str = "Hello World";
 
-pub fn show_demo() {
+pub fn test() {
     slice_demo();
     struct_demo();
     enum_demo();
