@@ -9,11 +9,12 @@ impl Solution {
 
     pub fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
 
-		let mut dummy = ListNode::new(0);
+		let mut dummy: ListNode = ListNode::new(0);
 		dummy.next = head;
-		let mut dummy = Box::new(dummy);
-		let mut  cur = dummy.clone();
-		let mut prev = dummy.as_mut();
+
+		let mut dummy: Box<ListNode> = Box::new(dummy);
+		let mut  cur: Box<ListNode> = dummy.clone();
+		let mut prev: &mut ListNode = dummy.as_mut();
 
 		for _ in 0..n {
 			cur = cur.next.unwrap();
@@ -24,7 +25,10 @@ impl Solution {
 			prev = prev.next.as_mut().unwrap();
 		}
 
-		let post = prev.next.as_mut().unwrap();
+		let post = prev
+										.next
+										.as_mut()
+										.unwrap();
 		prev.next = post.next.clone();
 
 		return dummy.next;
