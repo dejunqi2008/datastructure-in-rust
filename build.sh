@@ -5,7 +5,7 @@ elif [ $1 = "no-warn" ]; then
     echo " build but igniore all warning message"
     cargo rustc -- -Awarnings 
 elif [ -z "$1" ]; then
-    echo "--- full build --- "
-    cargo build
+    echo "--- full build and run --- "
+    cargo run
 fi
 
