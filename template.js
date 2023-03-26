@@ -23,7 +23,7 @@ const run = () => {
     const lc_code_path = `${CURRENT_WORKSPACE}/src/leetcode/${modname}/solution.rs`;
     ps.execSync(`touch ${lc_mod_path} ${lc_code_path}`);
     fs.writeFileSync(lc_mod_path, 'pub mod solution;');
-    fs.writeFileSync(lc_code_path, 'pub struct Solution;\n\nimpl Solution {\n\n\tpub fn test() {}\n}\n');
+    fs.writeFileSync(lc_code_path, 'pub struct Solution;\n\nimpl Solution {\n\n    pub fn test() {}\n}\n');
     fs.appendFileSync(LC_MOD_FILE_ROOT, `\npub mod ${modname};`)
 }
 
