@@ -1,49 +1,77 @@
-use crate::leetcode::utils::list_node::ListNode;
+use std::fmt::DebugTuple;
+
+use crate::leetcode::utils::list_node::{
+	ListNode,
+	print_list_helper,
+	create_linkedlist
+};
 
 pub struct Solution {}
 
 impl Solution {
     pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
 
-		// create a mutableHead variable
-		let mut mutableHead = head;
+        let mut dummy: Box<ListNode> = Box::new(ListNode::new(0));
+        dummy.next = head;
+        let mut cur: Box<ListNode> = dummy.clone();
+        let mut prev: &mut ListNode = dummy.as_mut();
 
-		// create a mutable reference 'cur' (runner node) to the mutable head, so that we can modify it if condition is satifised during the traverse
-		let mut cur = &mut mutableHead;
+        if cur.next.is_some() {
+            cur = cur.next.unwrap();
+        }
 
-		loop {
-			match cur {
-				None => break,
-				Some(node) if val == node.val => {
-					// here we "drop" the content of current runner node and replace it with its next
-					// since we are modifing the cur (runner node), that is why we have to define cur as mut
-					*cur = node.next.take();
-				},
-				Some(node) => {
-					cur = &mut node.next;
-				}
-			}
-		}
+        loop {
+            match cur.next {
+                None => break,
+                Some(_) if cur.val == val => {
+                    prev.next = prev.next.as_mut().unwrap().next.take();
+                    cur = cur.next.unwrap();
+                },
+                Some(_) => {
+                    prev = prev.next.as_mut().unwrap();
+                    cur = cur.next.unwrap();
+                }
+            }
+        }
 
+        if cur.val == val {
+            prev.next = prev.next.as_mut().unwrap().next.take();
+        }
 
-		return mutableHead;
+        return dummy.next;
+
     }
 
 
 	pub fn test() {
-		let arr: [i32; 6] = [5, 4, 3, 2, 4, 1];
-		let mut head = None;
-		for i in 0..6 {
-			let node: Box<ListNode> = Box::new(ListNode {
-				val: arr[i],
-				next: head.take()
-			});
-			head = Some(node);
-		}
-
-		Self::remove_elements(head, 4);
-
+        Self::case1();
+        Self::case2();
+		Self::case3();
 	}
+
+	fn case1() {
+		let arr: [i32; 6] = [5, 4, 3, 2, 4, 1];
+		let head: Option<Box<ListNode>> = create_linkedlist(&arr);
+		let new_head: Option<Box<ListNode>> = Self::remove_elements(head, 4);
+		print_list_helper(&new_head);
+	}
+
+	fn case2() {
+		let arr: [i32; 1] = [ 1];
+		let head: Option<Box<ListNode>> = create_linkedlist(&arr);
+		let new_head: Option<Box<ListNode>> = Self::remove_elements(head, 1);
+		print_list_helper(&new_head);
+	}
+
+	fn case3() {
+		let arr: [i32; 0] = [];
+		let head: Option<Box<ListNode>> = create_linkedlist(&arr);
+		let new_head: Option<Box<ListNode>> = Self::remove_elements(head, 1);
+		print_list_helper(&new_head);
+	}
+
+
+	
 }
 
 /*
