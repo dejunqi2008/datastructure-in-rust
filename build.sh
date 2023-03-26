@@ -8,3 +8,4 @@ elif [ -z "$1" ]; then
     echo "--- full build --- "
     cargo build
 fi
+
