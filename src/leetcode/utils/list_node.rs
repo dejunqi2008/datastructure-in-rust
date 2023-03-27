@@ -29,12 +29,17 @@ pub fn print_list_helper(head: &Option<Box<ListNode>>) {
 }
 
 pub fn create_linkedlist(arr: &[i32]) -> Option<Box<ListNode>> {
-    // let arr = [5, 4, 3, 2, 1];
+
+    let mut vec: Vec<i32> = vec![];
+    for i in arr.iter() {
+        vec.insert(0, *i);
+    }
+
     let mut head: Option<Box<ListNode>> = None;
 
-    for i in 0..arr.len() {
+    for i in vec.iter() {
         let node: Box<ListNode> = Box::new(ListNode {
-            val: arr[i],
+            val: *i,
             next: head.take()
         });
         head = Some(node);
