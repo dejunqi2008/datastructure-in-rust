@@ -1,16 +1,12 @@
-mod rust_basic;
+mod rust_core;
 mod leetcode;
 mod data_structures;
 
 
-// use rust_basic::demo02;
-// use rust_basic::demo03;
-// use rust_basic::demo05::test;
-// use leetcode::lc00020::solution;
-// use data_structures::deque::test;
 use leetcode::lc00203::solution::Solution;
 // use data_structures::link_list::test;
+use rust_core::multi_threading::multi_threading::test;
 
 fn main() {
-    Solution::test();
+    test();
 }
