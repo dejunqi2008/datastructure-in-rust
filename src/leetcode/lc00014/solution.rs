@@ -1,6 +1,3 @@
-use std::u32::MAX;
-use std::cmp::min;
-
 pub struct Solution;
 
 
