@@ -6,7 +6,29 @@ use std::cell::{RefCell, RefMut};
 
 pub struct Solution;
 
+type RcTreeNode = Rc<RefCell<TreeNode>>;
+
 impl Solution {
+
+    pub fn inorder_traversalV2(root: Option<RcTreeNode>) -> Vec<i32> {
+
+        let mut root = root;
+        let mut nums = vec![];
+        Self::helper(&root, &mut nums);
+        return nums;
+    }
+
+    fn helper(node: &Option<RcTreeNode>, nums: &mut Vec<i32>) {
+        if node.is_none() {
+            return;
+        }
+        let left: &Option<RcTreeNode> = &node.as_ref().unwrap().borrow().left;
+        let right: &Option<RcTreeNode> = &node.as_ref().unwrap().borrow().right;
+        let val = node.as_ref().unwrap().borrow().val;
+        Self::helper(left, nums);
+        nums.push(val);
+        Self::helper(right, nums)
+    }
 
     pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
 
