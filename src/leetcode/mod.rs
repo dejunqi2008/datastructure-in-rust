@@ -26,3 +26,4 @@ pub mod lc00215;
 pub mod lc00015;
 pub mod lc00039;
 pub mod lc00210;
+pub mod lc01136;
