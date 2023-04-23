@@ -32,3 +32,4 @@ pub mod lc00347;
 pub mod lc00045;
 pub mod lc00056;
 pub mod lc00057;
+pub mod lc00058;
