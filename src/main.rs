@@ -3,7 +3,8 @@ mod leetcode;
 mod data_structures;
 
 
-use leetcode::lc00128::solution::Solution;
+// use leetcode::lc00128::solution::Solution;
+use crate::leetcode::utils::min_heap::Solution;
 // use data_structures::link_list::test;
 // use rust_core::multi_threading::multi_threading::test;
 
