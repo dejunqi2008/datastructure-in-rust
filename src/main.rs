@@ -4,8 +4,8 @@ mod data_structures;
 
 
 // use leetcode::lc00128::solution::Solution;
-use crate::leetcode::utils::min_heap::Solution;
-// use data_structures::link_list::test;
+// use crate::leetcode::utils::min_heap::Solution;
+use data_structures::bst::Solution;
 // use rust_core::multi_threading::multi_threading::test;
 
 fn main() {
