@@ -126,7 +126,49 @@ impl<K,V> BST<K, V> where K: Clone + Ord + Debug, V: Clone + Debug {
         return node;
     }
 
-    // TODO: delete node
+    pub fn delete(&mut self, _key: K) {
+        if self.root.is_none() {
+            return;
+        }
+        let new_root: Option<RcTreeNode<K, V>> = Self::delete_helper(self.root.take(), _key);
+        self.root = new_root;
+    }
+
+    fn delete_helper(node: Option<RcTreeNode<K, V>>, _key: K) -> Option<RcTreeNode<K, V>> {
+        if node.is_none() {
+            return None;
+        }
+        let key = node.as_ref().unwrap().borrow().key.clone();
+        if _key.cmp(&key).is_lt() {
+            let left: Option<RcTreeNode<K, V>> = node.as_ref().unwrap().borrow().left.clone();
+            let returned_left: Option<RcTreeNode<K, V>> = Self::delete_helper(left, _key);
+            node.as_ref().unwrap().borrow_mut().left = returned_left;
+        } else if _key.cmp(&key).is_gt() {
+            let right: Option<RcTreeNode<K, V>> = node.as_ref().unwrap().borrow().right.clone();
+            let returned_right: Option<RcTreeNode<K, V>> = Self::delete_helper(right, _key);
+            node.as_ref().unwrap().borrow_mut().right = returned_right;
+        } else {
+            if node.as_ref().unwrap().borrow().left.is_none() {
+                return node.as_ref().unwrap().borrow().right.clone();
+            }
+            if node.as_ref().unwrap().borrow().right.is_none() {
+                return node.as_ref().unwrap().borrow().left.clone();
+            }
+
+            let mut cur: Option<RcTreeNode<K, V>> = node.as_ref().unwrap().borrow_mut().left.clone();
+            while cur.as_ref().unwrap().borrow().right.is_some() {
+                let right: Option<RcTreeNode<K, V>> = cur.as_ref().unwrap().borrow_mut().right.take();
+                cur = right;
+            }
+
+            node.as_ref().unwrap().borrow_mut().key = cur.as_ref().unwrap().borrow().key.clone();
+            let left: Option<RcTreeNode<K, V>> = node.as_ref().unwrap().borrow().left.clone();
+            let returned_left: Option<RcTreeNode<K, V>> = Self::delete_helper(left, cur.as_ref().unwrap().borrow().key.clone());
+            node.as_ref().unwrap().borrow_mut().left = returned_left;   
+        }
+
+        return node;
+    }
 
 
 }
