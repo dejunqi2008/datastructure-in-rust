@@ -66,11 +66,17 @@ impl<K,V> BST<K, V> where K: Clone + Ord + Debug, V: Clone + Debug {
     }
 
     pub fn insert(&mut self, _key: K, _val: V) {
+
+        let mut new_root: Option<RcTreeNode<K, V>> = None;
+
         if self.root.is_none() {
-            self.root = Some(Rc::new(RefCell::new(TreeNode::new(_key, _val))));
-            
+            new_root = Some(Rc::new(RefCell::new(TreeNode::new(_key, _val))));
         } else {
-            self.root = Self::insert_helper(self.root.take(), _key, _val);
+            new_root = Self::insert_helper(self.root.take(), _key, _val);
+        }
+        if new_root.is_some() {
+            self.root = new_root;
+            self.size += 1;
         }
     }
 
@@ -102,11 +108,20 @@ impl<K,V> BST<K, V> where K: Clone + Ord + Debug, V: Clone + Debug {
         if node_key.cmp(&_key).is_gt() {
             let left_child: Option<RcTreeNode<K, V>> = node.as_ref().unwrap().borrow().left.clone();
             let left: Option<RcTreeNode<K, V>> = Self::insert_helper(left_child, _key, _val);
+            if left.is_none() {
+                return None;
+            }
             node.as_ref().unwrap().borrow_mut().left = left;
         } else if node_key.cmp(&_key).is_lt() {
             let right_child: Option<RcTreeNode<K, V>> = node.as_ref().unwrap().borrow().right.clone();
             let right: Option<RcTreeNode<K, V>> = Self::insert_helper(right_child, _key, _val);
+            if right.is_none() {
+                return None;
+            }
             node.as_ref().unwrap().borrow_mut().right = right;
+        } else {
+            // If user try to insert a key that is already exist
+            return None;
         }
         return node;
     }
