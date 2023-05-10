@@ -1,11 +1,12 @@
 // bonary search tree
 // bst.rs
+#![allow(unused)]
 
-use std::cmp::Ordering;
-use std::ops::Deref;
 use std::fmt::Debug;
 use std::rc::Rc;
-use std::cell::{RefCell, RefMut, Ref};
+use std::cell::{RefCell};
+
+
 
 type RcTreeNode<K,V> = Rc<RefCell<TreeNode<K, V>>>;
 
@@ -17,9 +18,10 @@ struct TreeNode<K, V> {
     right: Option<RcTreeNode<K, V>>
 }
 
+
 impl<K, V> TreeNode<K, V>
     where K: Clone + Ord + Debug, V: Clone + Debug {
-    
+
     fn new(k: K, v: V) -> Self {
         Self {
             key: k,

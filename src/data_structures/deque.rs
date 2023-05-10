@@ -1,5 +1,4 @@
-
-
+#![allow(unused)]
 
 pub struct Deque<T> {
     data: Vec<T>,

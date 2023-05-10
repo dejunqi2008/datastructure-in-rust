@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 // standard library of Rust
 
 use std::collections::HashMap;

@@ -1,3 +1,4 @@
+#![allow(unused)]
 // queue.rs
 
 pub struct Queue<T> {

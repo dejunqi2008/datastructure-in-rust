@@ -1,3 +1,4 @@
+#![allow(unused)]
 use crate::data_structures::stack::Stack;
 use std::collections::HashMap;
 

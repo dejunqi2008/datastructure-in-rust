@@ -1,3 +1,4 @@
+#![allow(unused)]
 use std::cmp::{min, max};
 
 pub struct Solution;

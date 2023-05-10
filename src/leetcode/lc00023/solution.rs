@@ -1,3 +1,4 @@
+#![allow(unused)]
 use std::collections::BinaryHeap;
 use std::cmp::Ordering;
 use crate::leetcode::utils::list_node::ListNode;

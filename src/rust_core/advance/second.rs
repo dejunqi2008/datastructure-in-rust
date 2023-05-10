@@ -1,4 +1,4 @@
-
+#![allow(unused)]
 
 type Link<T> = Option<Box<Node<T>>>;
 

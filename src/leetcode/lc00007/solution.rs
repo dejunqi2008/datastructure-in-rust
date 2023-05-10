@@ -1,3 +1,4 @@
+#![allow(unused)]
 
 pub struct Solution;
 
@@ -13,13 +14,13 @@ impl Solution {
         let mut x = x.abs();
 
         while x > 0 {
-            let lastDigit = x % 10;
+            let last_digit = x % 10;
             let a: Option<i32> = res.checked_mul(10);
             if a == None {
                 return 0;
             }
 
-            let b: Option<i32> = a.unwrap().checked_add(lastDigit);
+            let b: Option<i32> = a.unwrap().checked_add(last_digit);
             if b == None {
                 return 0;
             }

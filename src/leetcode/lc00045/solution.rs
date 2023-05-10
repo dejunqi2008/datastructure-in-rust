@@ -1,3 +1,4 @@
+#![allow(unused)]
 use std::cmp::min;
 pub struct Solution;
 
@@ -19,9 +20,9 @@ impl Solution {
 
         let mut cur = nums.len() + 1;
 
-        let nextJum = nums[idx];
+        let next_jum = nums[idx];
 
-        for i in 1..(nextJum + 1) {
+        for i in 1..(next_jum + 1) {
             let next_pos = idx + i as usize;
             if next_pos < nums.len() {
                 let res = 1 + Self::helper(nums, next_pos, memo);

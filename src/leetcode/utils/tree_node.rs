@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 use std::{rc::Rc, cell::RefCell};
 // ONly used for leetcode question, for data structure, everything should be generic type
 #[derive(Debug, PartialEq, Eq)]
