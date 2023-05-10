@@ -1,3 +1,4 @@
+#![allow(unused)]
 use crate::leetcode::utils::list_node::ListNode;
 
 pub struct Solution;

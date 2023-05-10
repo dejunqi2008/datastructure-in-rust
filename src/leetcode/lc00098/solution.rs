@@ -1,3 +1,4 @@
+#![allow(unused)]
 use crate::leetcode::utils::tree_node::TreeNode;
 use std::rc::Rc;
 use std::cell::RefCell;

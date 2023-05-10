@@ -1,6 +1,6 @@
+#![allow(unused)]
+
 // Rust: ownership and scope demo
-
-
 
 fn borrow_demo(){
     fn change(s: &mut String) {

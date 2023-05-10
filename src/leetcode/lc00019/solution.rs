@@ -1,3 +1,4 @@
+#![allow(unused)]
 use crate::leetcode::utils::list_node::{
 	ListNode,
 	print_list_helper,

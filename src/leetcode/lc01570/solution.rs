@@ -1,3 +1,4 @@
+#![allow(unused)]
 
 pub struct SparseVector {
     items: Vec<(i32, i32)>

@@ -1,3 +1,4 @@
+#![allow(unused)]
 use std::thread;
 use rand::Rng;
 use std::io;

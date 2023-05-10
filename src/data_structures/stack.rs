@@ -1,4 +1,4 @@
-
+#![allow(unused)]
 pub struct Stack<T> {
     top: usize,
     data: Vec<T>,
