@@ -1,8 +1,6 @@
-
+#![allow(unused)]
 
 use std::collections::{HashMap};
-// use std::ops::Range;
-
 
 pub struct Solution;
 

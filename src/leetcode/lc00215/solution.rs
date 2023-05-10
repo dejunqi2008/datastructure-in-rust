@@ -1,6 +1,6 @@
+#![allow(unused)]
 use std::collections::BinaryHeap;
 use std::cmp::Reverse;
-
 
 pub struct Solution;
 

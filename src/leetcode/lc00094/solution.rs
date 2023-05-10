@@ -11,7 +11,7 @@ type RcTreeNode = Rc<RefCell<TreeNode>>;
 
 impl Solution {
 
-    pub fn inorder_traversalV2(root: Option<RcTreeNode>) -> Vec<i32> {
+    pub fn inorder_traversal_v2(root: Option<RcTreeNode>) -> Vec<i32> {
 
         let mut root = root;
         let mut nums = vec![];
